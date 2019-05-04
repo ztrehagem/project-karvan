@@ -1,4 +1,4 @@
 <template lang="pug">
-.layout.layout-default
+.layout.layout-game
   router-view
 </template>

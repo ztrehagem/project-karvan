@@ -1,3 +1,3 @@
 <template lang="pug">
-router-view
+.page-404 404 Not Found
 </template>

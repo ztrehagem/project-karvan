@@ -1,10 +1,11 @@
-import Vue, { VueConstructor } from 'vue';
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
 const layouts = {
   default: () => import('./layouts/default.vue'),
+  game: () => import('./layouts/game.vue'),
 };
 
 const router = new VueRouter({
@@ -13,7 +14,27 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      components: { default: () => import('./pages/index.vue'), layout: layouts.default },
+      component: layouts.default,
+      children: [
+        { path: '', name: 'index', component: () => import('./pages/index.vue') },
+      ],
+    },
+    {
+      path: '/game',
+      component: layouts.game,
+      children: [
+        {
+          path: 'base', component: () => import('./pages/base.vue'), children: [
+            { path: '', name: 'game:base', component: () => import('./pages/base/index.vue') },
+            { path: 'shop', name: 'game:base:shop', component: () => import('./pages/base/shop/index.vue') },
+            { path: 'shop/buy', name: 'game:base:shop:buy', component: () => import('./pages/base/shop/buy.vue') },
+          ],
+        },
+      ],
+    },
+    {
+      path: '*',
+      component: () => import('./pages/404.vue'),
     },
   ],
 });

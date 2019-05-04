@@ -1,8 +1,11 @@
 import Vue from 'vue';
-import App from './app.vue';
+import './styles/global.styl';
+import './plugins/firebase';
+import './plugins/device';
+import './plugins/wait';
 import router from './router';
 import store from './store';
-import './plugins/firebase';
+import App from './app.vue';
 import './registerServiceWorker';
 
 Vue.config.productionTip = false;
