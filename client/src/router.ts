@@ -26,8 +26,8 @@ const router = new VueRouter({
         {
           path: 'base', component: () => import('./pages/base.vue'), children: [
             { path: '', name: 'game:base', component: () => import('./pages/base/index.vue') },
-            { path: 'shop', name: 'game:base:shop', component: () => import('./pages/base/shop/index.vue') },
-            { path: 'shop/buy', name: 'game:base:shop:buy', component: () => import('./pages/base/shop/buy.vue') },
+            { path: 'shop', name: 'game:base:shop', component: () => import('./pages/base/shop.vue') },
+            { path: 'shop/buy', name: 'game:base:shop:buy', component: () => import('./pages/base/shop-buy.vue') },
           ],
         },
       ],

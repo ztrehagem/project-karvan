@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import HeadBar from '@/components/base/head-bar.vue';
+import HeadBar from '@/components/common/head-bar.vue';
 export default Vue.extend({
   components: {
     HeadBar,

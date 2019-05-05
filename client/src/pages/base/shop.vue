@@ -1,6 +1,6 @@
 <template lang="pug">
 .page-base-shop(:class="rootClass")
-  menu-list.menu(:links="links")
+  menu-list.menu(:links="links", back="ショップを出る")
 </template>
 
 <script lang="ts">
@@ -16,7 +16,6 @@ export default Vue.extend({
       links: [
         { to: { name: 'game:base:shop:buy' }, label: 'アイテムを買う' },
         { to: '', label: 'アイテムを売る' },
-        { to: { name: 'game:base' }, label: 'ショップを出る' },
       ],
     };
   },
