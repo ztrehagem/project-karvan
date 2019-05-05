@@ -1,5 +1,6 @@
 @require "include"
 @require "reset"
+@require "material-icons"
 
 html
   background-color $cl-light
@@ -7,12 +8,16 @@ html
 
 body
   color $cl-dark
+  min-width 768px
   font-size 1.6rem
   +mobile()
     font-size 1.4rem
 
 a
   text-decoration none
+
+button
+  border none
 
 .layout
   overflow hidden

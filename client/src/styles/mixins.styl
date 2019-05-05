@@ -1,45 +1,33 @@
-@require "variables";
-@require "functions";
+@require "variables"
+@require "functions"
 
-hover() {
-  {as-hover()} {
+hover()
+  {as-hover()}
     {block}
-  }
-}
 
-media(query) {
-  @media query {
-    /{selector()} {
+media(query)
+  @media query
+    /{selector()}
       {block}
-    }
-  }
-}
 
-tablet() {
-  +media("screen and (max-width: 1023px)") {
+tablet()
+  +media("screen and (max-width: 1023px)")
     {block}
-  }
-}
 
-mobile() {
-  +media("screen and (max-width: 767px)") {
+mobile()
+  +media("screen and (max-width: 767px)")
     {block}
-  }
-}
 
-container() {
-  box-sizing: border-box;
-  max-width: calc(1200px + 4rem);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 2rem;
-  padding-right: @padding-left;
-
-  +mobile() {
-    padding-left: 1.5rem;
-    padding-right: @padding-left;
-  }
-}
+container()
+  box-sizing border-box
+  max-width calc(1200px + 4rem)
+  margin-left auto
+  margin-right auto
+  padding-left 2rem
+  padding-right @padding-left
+  +mobile()
+    padding-left 1.5rem
+    padding-right @padding-left
 
 enter-leave($properties)
   transition 200ms ease

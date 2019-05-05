@@ -1,6 +1,6 @@
 <template lang="pug">
 .menu-list
-  router-link.link(v-for="link in links", :to="link.to")
+  router-link.link(v-for="(link, index) in links", :to="link.to", :key="index")
     .label {{link.label}}
 </template>
 
@@ -28,7 +28,7 @@ export default Vue.extend({
   .link
     border 3px solid $cl-dark
     border-left none
-    border-radius 0 0 9px 0
+    // border-radius 0 0 9px 0
     display flex
     align-items center
     height 6rem

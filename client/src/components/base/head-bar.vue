@@ -1,6 +1,6 @@
 <template lang="pug">
 .head-bar
-  .basetypeicon 港湾都市
+  .basetypeicon: div 港湾都市
   .areaname 港町ポルタメリア(仮)
   .datetimeindicator
     .display
@@ -21,18 +21,25 @@
     height 6rem
     display flex
     align-items center
+    background-color $cl-light
+    z-index 100
 
   .basetypeicon
     position absolute
     top 0
     left 0
-    width 12rem
+    width 10rem
     height 8rem
     transform skewX(-20deg)
     border 3px solid $cl-dark
     border-top none
     border-left none
     background-color $cl-light
+    display flex
+    align-items center
+    justify-content center
+    > *
+      transform skewX(20deg)
 
   .areaname
     margin-left 14rem
