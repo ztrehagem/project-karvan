@@ -24,10 +24,10 @@ const router = new VueRouter({
       component: layouts.game,
       children: [
         {
-          path: 'base', component: () => import('./pages/base.vue'), children: [
-            { path: '', name: 'game:base', component: () => import('./pages/base/index.vue') },
-            { path: 'shop', name: 'game:base:shop', component: () => import('./pages/base/shop.vue') },
-            { path: 'shop/buy', name: 'game:base:shop:buy', component: () => import('./pages/base/shop-buy.vue') },
+          path: 'base', component: () => import('./pages/game/base.vue'), children: [
+            { path: '', name: 'game:base', component: () => import('./pages/game/base/index.vue') },
+            { path: 'shop', name: 'game:base:shop', component: () => import('./pages/game/base/shop.vue') },
+            { path: 'shop/buy', name: 'game:base:shop:buy', component: () => import('./pages/game/base/shop-buy.vue') },
           ],
         },
       ],
