@@ -1,20 +1,24 @@
 <template lang="pug">
 .game-field-map(:class="rootClass")
   .map(:style="mapStyle")
-    button.point(v-for="point in map", ref="point", :data-id="point.id", :style="pointStyle(point)", type="button", @click="currentPointId = point.id")
+    .point(v-for="point in map", ref="point", :data-point-id="point.id", :style="pointStyle(point)")
+      field-line.line(v-for="cp in connectedLowerPoints(point.id, point.conn)", :key="cp.id", :from="point", :to="cp")
+      button.button(type="button", @click="currentPointId = point.id")
   .center
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import FieldLine from '@/components/field/line.vue';
 import map, { Point } from '@/assets/map';
-import LeaderLine, { LeaderLineInstance } from '@/plugins/leader-line';
 export default Vue.extend({
+  components: {
+    FieldLine,
+  },
   data() {
     return {
       rootClass: { _enter: true, _leaving: false },
       map,
-      lines: [] as LeaderLineInstance[],
       currentPointId: 0,
     };
   },
@@ -29,10 +33,8 @@ export default Vue.extend({
   async mounted() {
     await this.$waitFrame();
     this.rootClass._enter = false;
-    this.createLines();
   },
   async beforeRouteLeave(to, from, next) {
-    this.lines.forEach((line) => line.remove());
     this.rootClass._leaving = true;
     await this.$wait(200);
     next();
@@ -41,18 +43,8 @@ export default Vue.extend({
     pointStyle(point: Point) {
       return { top: `${point.y * 8}rem`, left: `${point.x * 8}rem` };
     },
-    createLines() {
-      const pointRefs = this.$refs.point as Element[];
-      this.lines = this.map.reduce((lines, point) => {
-        return lines.concat(point.conn.filter((connected) => connected < point.id).map((connected) => {
-          return new LeaderLine(pointRefs[point.id], pointRefs[connected], {
-            path: 'straight',
-            startPlug: 'behind',
-            endPlug: 'behind',
-            color: '303030',
-          });
-        }));
-      }, [] as LeaderLineInstance[]);
+    connectedLowerPoints(id: number, conn: number[]) {
+      return conn.filter((c) => c < id).map((cid) => this.map.find((point) => point.id === cid));
     },
   },
 });
@@ -75,12 +67,21 @@ export default Vue.extend({
     position absolute
     width 3.5rem
     height 3.5rem
-    background-color $cl-gray
-    border 3px solid $cl-dark
-    border-radius 50%
     transform translate(-50%, -50%)
     +enter-leave(transform)
       transform translate(-50%, -50%) scale(0)
+
+  .button
+    display block
+    width 100%
+    height 100%
+    background-color $cl-gray
+    border 3px solid $cl-dark
+    border-radius 50%
+    z-index 10
+
+  .line
+    z-index -1
 
   .center
     position absolute
