@@ -1,5 +1,5 @@
 <template lang="pug">
-.game-base(:class="rootClass")
+.game-field(:class="rootClass")
   head-bar.head(:info="info")
   .main
     router-view
@@ -16,8 +16,8 @@ export default Vue.extend({
     return {
       rootClass: { _enter: true, _leaving: false },
       info: {
-        type: '港湾都市',
-        name: '港町ポルタメリア(仮)',
+        type: 'フィールド',
+        name: '大陸東地方',
       },
     };
   },
@@ -36,7 +36,7 @@ export default Vue.extend({
 <style lang="stylus" scoped>
 @require "~@/styles/include"
 
-.game-base
+.game-field
   &
     display flex
     height 100vh
@@ -58,3 +58,4 @@ export default Vue.extend({
       width 100%
       height 100%
 </style>
+

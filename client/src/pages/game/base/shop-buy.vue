@@ -1,5 +1,5 @@
 <template lang="pug">
-.page-base-shop-buy(:class="rootClass")
+.game-base-shop-buy(:class="rootClass")
   .heading アイテムを買う
   tabbed-item-list.list(:tabbed-items="items")
   .foot
@@ -72,7 +72,7 @@ export default Vue.extend({
 
 $pad = 5rem
 
-.page-base-shop-buy
+.game-base-shop-buy
   &
     padding $pad
     display flex

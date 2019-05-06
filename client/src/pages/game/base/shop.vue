@@ -1,5 +1,5 @@
 <template lang="pug">
-.page-base-shop(:class="rootClass")
+.game-base-shop(:class="rootClass")
   menu-list.menu(:links="links", back="ショップを出る")
 </template>
 
@@ -34,7 +34,7 @@ export default Vue.extend({
 <style lang="stylus" scoped>
 @require "~@/styles/include"
 
-.page-base-shop
+.game-base-shop
   &
     display flex
     align-items center

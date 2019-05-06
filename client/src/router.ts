@@ -30,6 +30,11 @@ const router = new VueRouter({
             { path: 'shop/buy', name: 'game:base:shop:buy', component: () => import('./pages/game/base/shop-buy.vue') },
           ],
         },
+        {
+          path: 'field', component: () => import('./pages/game/field.vue'), children: [
+            { path: '', name: 'game:field', component: () => import('./pages/game/field/map.vue') },
+          ],
+        },
       ],
     },
     {

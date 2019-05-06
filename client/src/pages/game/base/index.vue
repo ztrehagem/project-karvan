@@ -1,5 +1,5 @@
 <template lang="pug">
-.page-base-index(:class="rootClass")
+.game-base-index(:class="rootClass")
   menu-list.menu(:links="links")
 </template>
 
@@ -18,7 +18,7 @@ export default Vue.extend({
         { to: { name: 'game:base:shop' }, label: 'アイテム屋' },
         { to: '', label: '武具屋' },
         { to: '', label: 'ギルド' },
-        { to: { name: 'index' }, label: '外に出る' },
+        { to: { name: 'game:field' }, label: '外に出る' },
       ],
     };
   },
@@ -37,7 +37,7 @@ export default Vue.extend({
 <style lang="stylus" scoped>
 @require "~@/styles/include"
 
-.page-base-index
+.game-base-index
   &
     display flex
     align-items center

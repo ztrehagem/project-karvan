@@ -1,7 +1,7 @@
 <template lang="pug">
 .head-bar
-  .basetypeicon: div 港湾都市
-  .areaname 港町ポルタメリア(仮)
+  .basetypeicon: div {{info.type}}
+  .areaname {{info.name}}
   .datetimeindicator
     .display
       div
@@ -10,6 +10,16 @@
       div
         span.time ZZ時
 </template>
+
+<script lang="ts">
+import Vue from 'vue';
+export default Vue.extend({
+  props: {
+    info: { type: Object, required: true },
+  },
+});
+</script>
+
 
 <style lang="stylus" scoped>
 @require "~@/styles/include"
