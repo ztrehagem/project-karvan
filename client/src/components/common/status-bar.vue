@@ -20,6 +20,7 @@ export default Vue.extend({
 .status-bar
   &
     border-top 3px solid $cl-dark
+    background-color $cl-light
 
   .table
     padding 2rem

@@ -108,7 +108,7 @@ export default Vue.extend({
     background-color $cl-gray
     border 3px solid $cl-dark
     border-radius 50%
-    z-index 10
+    z-index 1
 
   .line
     z-index -1

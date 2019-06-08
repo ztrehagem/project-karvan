@@ -30,7 +30,6 @@ export default Vue.extend({
     display flex
     align-items center
     background-color $cl-light
-    z-index 100
 
   .basetypeicon
     position absolute

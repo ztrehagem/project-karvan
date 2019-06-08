@@ -39,6 +39,7 @@ export default Vue.extend({
 
   .head
     flex 0 0 auto
+    z-index 100
     transform none
     +enter-leave(transform)
       transform translateY(-100%)
@@ -55,6 +56,7 @@ export default Vue.extend({
 
   .foot
     flex 0 0 auto
+    z-index 100
     transform none
     +enter-leave(transform)
       transform translateY(100%)
