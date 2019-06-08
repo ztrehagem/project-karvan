@@ -2,15 +2,16 @@ import Vue from 'vue'
 import './styles/global.styl'
 import './plugins/firebase'
 import './plugins/device'
-import BackLink from './components/global/back-link.vue'
+import './plugins/back-link'
 import router from './router'
 import store from './store'
 import App from './app.vue'
 import './registerServiceWorker'
+import * as consts from './consts'
 
 Vue.config.productionTip = false
 
-Vue.component('back-link', BackLink)
+Vue.prototype.$consts = consts
 
 new Vue({
   router,

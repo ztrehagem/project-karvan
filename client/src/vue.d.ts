@@ -1,8 +1,8 @@
 import Vue from 'vue'
+import * as consts from './consts'
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $wait: (ms?: number) => Promise<void>
-    $waitFrame: (ms?: number) => Promise<void>
+    $consts: typeof consts;
   }
 }

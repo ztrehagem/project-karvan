@@ -2,9 +2,9 @@
 .game-field-map
   .map(:style="mapStyle")
     .point(v-for="point in map", :style="pointStyle(point)")
-      field-line.line(v-for="cp in connectedLowerPoints(point.id, point.conn)", :key="cp.id", :from="point", :to="cp")
+      field-line.line(v-for="cp in connectedLowerPoints(point)", :key="cp.id", :from="point", :to="cp")
     .point(v-for="point in map", :style="pointStyle(point)")
-      button.button(type="button", @click="moveTo(point)")
+      button.button(type="button", @click="moveTo(point)", :disabled="moving")
   .center
 </template>
 
@@ -12,7 +12,10 @@
 import Vue from 'vue'
 import FieldLine from '@/components/field/line.vue'
 import EnterLeave from '@/mixins/enter-leave'
-import map, { Point } from '@/assets/map'
+import map, { Point, MapEvent } from '@/assets/map'
+import { wait } from '@/utils/wait'
+
+const MAP_MOVING_DURATION = 300
 
 export default Vue.extend({
   mixins: [
@@ -25,6 +28,7 @@ export default Vue.extend({
     return {
       map,
       currentPointId: 0,
+      moving: false,
     }
   },
   computed: {
@@ -36,14 +40,43 @@ export default Vue.extend({
     },
   },
   methods: {
-    moveTo(point: Point) {
+    async moveTo(point: Point) {
+      if (this.moving) {
+        console.info(`still moving`)
+        return
+      }
+      if (!this.currentPoint.conn.includes(point.id)) {
+        console.info(`can't move to`, point)
+        return
+      }
+      if (this.$store.state.player.ap < this.$consts.AP_CONSUME_FIELD_MOVE) {
+        console.info(`not enough AP to move`)
+        return
+      }
+      this.$store.commit('player/consumeAp', this.$consts.AP_CONSUME_FIELD_MOVE)
       this.currentPointId = point.id
+      this.moving = true
+      await wait(MAP_MOVING_DURATION)
+      if (this.currentPoint.onEnter) {
+        const exit = this.doMapEvent(this.currentPoint.onEnter)
+        if (exit) return
+      }
+      this.moving = false
+    },
+    doMapEvent(event: MapEvent) {
+      switch (event.kind) {
+        case 'enterBase':
+          this.$router.push({ path: '/game/base' })
+          return true
+      }
     },
     pointStyle(point: Point) {
       return { top: `${point.y * 8}rem`, left: `${point.x * 8}rem` }
     },
-    connectedLowerPoints(id: number, conn: number[]) {
-      return conn.filter((c) => c < id).map((cid) => this.map.find((point) => point.id === cid))
+    connectedLowerPoints(point: Point) {
+      return point.conn
+        .filter((c) => c < point.id)
+        .map((cid) => this.map.find(({ id }) => id === cid) as Point)
     },
   },
 })
@@ -58,7 +91,7 @@ export default Vue.extend({
     position absolute
     top 50%;
     left 50%;
-    transition .3s ease transform;
+    transition 300ms ease transform;
 
   .point
     position absolute
