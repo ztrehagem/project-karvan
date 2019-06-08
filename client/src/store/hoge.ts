@@ -1,10 +1,10 @@
-import Vue from 'vue';
-import Vuex, { Module } from 'vuex';
+import Vue from 'vue'
+import Vuex, { Module } from 'vuex'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export interface HogeState {
-  hoge: null;
+  hoge: null
 }
 
 export const hoge: Module<HogeState, {}> = {
@@ -16,6 +16,6 @@ export const hoge: Module<HogeState, {}> = {
   },
   actions: {
   },
-};
+}
 
-export default hoge;
+export default hoge

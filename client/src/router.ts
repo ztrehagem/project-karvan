@@ -1,12 +1,12 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const layouts = {
   default: () => import('./layouts/default.vue'),
   game: () => import('./layouts/game.vue'),
-};
+}
 
 const router = new VueRouter({
   mode: 'history',
@@ -42,6 +42,6 @@ const router = new VueRouter({
       component: () => import('./pages/404.vue'),
     },
   ],
-});
+})
 
-export default router;
+export default router

@@ -9,9 +9,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import TabbedItemList from '@/components/base/tabbed-item-list.vue';
-import EnterLeave from '@/mixins/enter-leave';
+import Vue from 'vue'
+import TabbedItemList from '@/components/base/tabbed-item-list.vue'
+import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   mixins: [
     EnterLeave,
@@ -56,9 +56,9 @@ export default Vue.extend({
           ],
         },
       ],
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="stylus" scoped>

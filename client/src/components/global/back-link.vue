@@ -4,14 +4,14 @@ button.back-link(type="button", @click="click")
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from 'vue'
 export default Vue.extend({
   methods: {
     click() {
-      this.$router.go(-1);
+      this.$router.go(-1)
     },
   },
-});
+})
 </script>
 
 <style lang="stylus" scoped>

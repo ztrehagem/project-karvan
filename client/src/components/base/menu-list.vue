@@ -7,13 +7,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from 'vue'
 export default Vue.extend({
   props: {
     links: { type: Array, required: true },
     back: { type: String, default: '' },
   },
-});
+})
 </script>
 
 

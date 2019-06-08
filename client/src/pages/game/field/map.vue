@@ -9,10 +9,10 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import FieldLine from '@/components/field/line.vue';
-import EnterLeave from '@/mixins/enter-leave';
-import map, { Point } from '@/assets/map';
+import Vue from 'vue'
+import FieldLine from '@/components/field/line.vue'
+import EnterLeave from '@/mixins/enter-leave'
+import map, { Point } from '@/assets/map'
 
 export default Vue.extend({
   mixins: [
@@ -25,28 +25,28 @@ export default Vue.extend({
     return {
       map,
       currentPointId: 0,
-    };
+    }
   },
   computed: {
     currentPoint(): Point {
-      return this.map[this.currentPointId];
+      return this.map[this.currentPointId]
     },
     mapStyle(): { transform: string } {
-      return { transform: `translate(-${this.currentPoint.x * 8}rem, -${this.currentPoint.y * 8}rem)` };
+      return { transform: `translate(-${this.currentPoint.x * 8}rem, -${this.currentPoint.y * 8}rem)` }
     },
   },
   methods: {
     moveTo(point: Point) {
-      this.currentPointId = point.id;
+      this.currentPointId = point.id
     },
     pointStyle(point: Point) {
-      return { top: `${point.y * 8}rem`, left: `${point.x * 8}rem` };
+      return { top: `${point.y * 8}rem`, left: `${point.x * 8}rem` }
     },
     connectedLowerPoints(id: number, conn: number[]) {
-      return conn.filter((c) => c < id).map((cid) => this.map.find((point) => point.id === cid));
+      return conn.filter((c) => c < id).map((cid) => this.map.find((point) => point.id === cid))
     },
   },
-});
+})
 </script>
 
 <style lang="stylus" scoped>

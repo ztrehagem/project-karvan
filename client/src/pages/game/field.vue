@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HeadBar from '@/components/common/head-bar.vue';
-import EnterLeave from '@/mixins/enter-leave';
+import Vue from 'vue'
+import HeadBar from '@/components/common/head-bar.vue'
+import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   mixins: [
     EnterLeave,
@@ -22,9 +22,9 @@ export default Vue.extend({
         type: 'フィールド',
         name: '大陸東地方',
       },
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="stylus" scoped>

@@ -4,9 +4,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import MenuList from '@/components/base/menu-list.vue';
-import EnterLeave from '@/mixins/enter-leave';
+import Vue from 'vue'
+import MenuList from '@/components/base/menu-list.vue'
+import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   mixins: [
     EnterLeave,
@@ -23,9 +23,9 @@ export default Vue.extend({
         { to: '', label: 'ギルド' },
         { to: { name: 'game:field' }, label: '外に出る' },
       ],
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="stylus" scoped>

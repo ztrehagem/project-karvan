@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import ItemList from '@/components/base/item-list.vue';
+import Vue from 'vue'
+import ItemList from '@/components/base/item-list.vue'
 export default Vue.extend({
   components: {
     ItemList,
@@ -18,9 +18,9 @@ export default Vue.extend({
   data() {
     return {
       tabIndex: 0,
-    };
+    }
   },
-});
+})
 </script>
 
 

@@ -4,9 +4,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import MenuList from '@/components/base/menu-list.vue';
-import EnterLeave from '@/mixins/enter-leave';
+import Vue from 'vue'
+import MenuList from '@/components/base/menu-list.vue'
+import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   mixins: [
     EnterLeave,
@@ -20,9 +20,9 @@ export default Vue.extend({
         { to: { name: 'game:base:shop:buy' }, label: 'アイテムを買う' },
         { to: '', label: 'アイテムを売る' },
       ],
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="stylus" scoped>
