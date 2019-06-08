@@ -17,7 +17,7 @@ export default Vue.extend({
   data() {
     return {
       links: [
-        { to: { name: 'game:base:shop:buy' }, label: 'アイテムを買う' },
+        { to: '/game/base/shop/buy', label: 'アイテムを買う' },
         { to: '', label: 'アイテムを売る' },
       ],
     }

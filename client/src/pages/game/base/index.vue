@@ -18,10 +18,10 @@ export default Vue.extend({
     return {
       links: [
         { to: '', label: 'マーケット' },
-        { to: { name: 'game:base:shop' }, label: 'アイテム屋' },
+        { to: '/game/base/shop', label: 'アイテム屋' },
         { to: '', label: '武具屋' },
         { to: '', label: 'ギルド' },
-        { to: { name: 'game:field' }, label: '外に出る' },
+        { to: '/game/field', label: '外に出る' },
       ],
     }
   },

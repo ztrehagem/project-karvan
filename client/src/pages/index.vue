@@ -3,7 +3,7 @@
   h1 PROJECT KARVAN
   ul
     li
-      router-link(:to="{ name: 'game:base' }") base
+      router-link(to="/game/base") base
     li
-      router-link(:to="{ name: 'game:field' }") field
+      router-link(to="/game/field") field
 </template>
