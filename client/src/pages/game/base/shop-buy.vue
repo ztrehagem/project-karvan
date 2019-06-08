@@ -62,8 +62,6 @@ export default Vue.extend({
 </script>
 
 <style lang="stylus" scoped>
-@require "~@/styles/include"
-
 $pad = 5rem
 
 .game-base-shop-buy

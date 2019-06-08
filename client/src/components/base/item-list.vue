@@ -14,8 +14,6 @@ export default Vue.extend({
 
 
 <style lang="stylus" scoped>
-@require "~@/styles/include"
-
 .item-list
   .item
     padding 1rem

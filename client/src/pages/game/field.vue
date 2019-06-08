@@ -28,8 +28,6 @@ export default Vue.extend({
 </script>
 
 <style lang="stylus" scoped>
-@require "~@/styles/include"
-
 .game-field
   &
     display flex

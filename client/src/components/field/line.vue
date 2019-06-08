@@ -57,8 +57,6 @@ export default Vue.extend({
 </script>
 
 <style lang="stylus" scoped>
-@require "~@/styles/include"
-
 .field-line
   &
     position absolute

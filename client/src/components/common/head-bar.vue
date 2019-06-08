@@ -22,8 +22,6 @@ export default Vue.extend({
 
 
 <style lang="stylus" scoped>
-@require "~@/styles/include"
-
 .head-bar
   &
     border-bottom 3px solid $cl-dark

@@ -25,8 +25,6 @@ export default Vue.extend({
 
 
 <style lang="stylus" scoped>
-@require "~@/styles/include"
-
 .tabbed-item-list
   &
     height 100%
