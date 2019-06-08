@@ -1,23 +1,28 @@
 <template lang="pug">
-.game-field-map(:class="rootClass")
+.game-field-map
   .map(:style="mapStyle")
-    .point(v-for="point in map", ref="point", :data-point-id="point.id", :style="pointStyle(point)")
+    .point(v-for="point in map", :style="pointStyle(point)")
       field-line.line(v-for="cp in connectedLowerPoints(point.id, point.conn)", :key="cp.id", :from="point", :to="cp")
-      button.button(type="button", @click="currentPointId = point.id")
+    .point(v-for="point in map", :style="pointStyle(point)")
+      button.button(type="button", @click="moveTo(point)")
   .center
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import FieldLine from '@/components/field/line.vue';
+import EnterLeave from '@/mixins/enter-leave';
 import map, { Point } from '@/assets/map';
+
 export default Vue.extend({
+  mixins: [
+    EnterLeave,
+  ],
   components: {
     FieldLine,
   },
   data() {
     return {
-      rootClass: { _enter: true, _leaving: false },
       map,
       currentPointId: 0,
     };
@@ -30,16 +35,10 @@ export default Vue.extend({
       return { transform: `translate(-${this.currentPoint.x * 8}rem, -${this.currentPoint.y * 8}rem)` };
     },
   },
-  async mounted() {
-    await this.$waitFrame();
-    this.rootClass._enter = false;
-  },
-  async beforeRouteLeave(to, from, next) {
-    this.rootClass._leaving = true;
-    await this.$wait(200);
-    next();
-  },
   methods: {
+    moveTo(point: Point) {
+      this.currentPointId = point.id;
+    },
     pointStyle(point: Point) {
       return { top: `${point.y * 8}rem`, left: `${point.x * 8}rem` };
     },

@@ -1,5 +1,5 @@
 <template lang="pug">
-.game-field(:class="rootClass")
+.game-field
   head-bar.head(:info="info")
   .main
     router-view
@@ -8,27 +8,21 @@
 <script lang="ts">
 import Vue from 'vue';
 import HeadBar from '@/components/common/head-bar.vue';
+import EnterLeave from '@/mixins/enter-leave';
 export default Vue.extend({
+  mixins: [
+    EnterLeave,
+  ],
   components: {
     HeadBar,
   },
   data() {
     return {
-      rootClass: { _enter: true, _leaving: false },
       info: {
         type: 'フィールド',
         name: '大陸東地方',
       },
     };
-  },
-  async mounted() {
-    await this.$waitFrame();
-    this.rootClass._enter = false;
-  },
-  async beforeRouteLeave(to, from, next) {
-    this.rootClass._leaving = true;
-    await this.$wait(200);
-    next();
   },
 });
 </script>

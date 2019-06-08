@@ -1,5 +1,5 @@
 <template lang="pug">
-.game-base-shop-buy(:class="rootClass")
+.game-base-shop-buy
   .heading アイテムを買う
   tabbed-item-list.list(:tabbed-items="items")
   .foot
@@ -11,13 +11,16 @@
 <script lang="ts">
 import Vue from 'vue';
 import TabbedItemList from '@/components/base/tabbed-item-list.vue';
+import EnterLeave from '@/mixins/enter-leave';
 export default Vue.extend({
+  mixins: [
+    EnterLeave,
+  ],
   components: {
     TabbedItemList,
   },
   data() {
     return {
-      rootClass: { _enter: true, _leaving: false },
       items: [
         {
           label: '薬',
@@ -54,15 +57,6 @@ export default Vue.extend({
         },
       ],
     };
-  },
-  async mounted() {
-    await this.$waitFrame();
-    this.rootClass._enter = false;
-  },
-  async beforeRouteLeave(to, from, next) {
-    this.rootClass._leaving = true;
-    await this.$wait(200);
-    next();
   },
 });
 </script>

@@ -2,7 +2,6 @@ import Vue from 'vue';
 import './styles/global.styl';
 import './plugins/firebase';
 import './plugins/device';
-import './plugins/wait';
 import BackLink from './components/global/back-link.vue';
 import router from './router';
 import store from './store';

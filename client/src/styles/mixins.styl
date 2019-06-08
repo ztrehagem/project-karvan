@@ -34,10 +34,8 @@ enter-leave($properties)
   transition-property $properties
 
   if length(split(' ', selector())) > 1
-    ~/._enter ^[1..-1],
-    ~/._leaving ^[1..-1]
+    ~/:not(.__enter-leave) ^[1..-1]
       {block}
   else
-    ~/._enter,
-    ~/._leaving
+    ~/:not(.__enter-leave)
       {block}
