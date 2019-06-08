@@ -1,7 +1,8 @@
 {
   "defaultSeverity": "warning",
   "extends": [
-    "tslint:recommended"
+    "tslint:recommended",
+    "@ztrehagem/tslint-rules"
   ],
   "linterOptions": {
     "exclude": [
@@ -9,31 +10,5 @@
     ]
   },
   "rules": {
-    "no-console": false,
-    "quotemark": [true, "single"],
-    "indent": [true, "spaces", 2],
-    "interface-name": false,
-    "ordered-imports": false,
-    "object-literal-sort-keys": false,
-    "no-consecutive-blank-lines": false,
-    "no-parameter-reassignment": true,
-    "semicolon": [true, "never"],
-    "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
-    "no-trailing-whitespace": true,
-    "space-before-function-paren": false,
-    "space-within-parens": [true, 0],
-    "one-variable-per-declaration": [true, "ignore-for-loop"],
-    "file-name-casing": [true, "kebab-case"],
-    "class-name": true,
-    "array-type": [true, "array"],
-    "prefer-const": true,
-    "no-var-keyword": true,
-    "no-return-await": true,
-    "no-eval": true,
-    "no-empty": [true, "allow-empty-catch"],
-    "no-dynamic-delete": true,
-    "curly": [true, "ignore-same-line"],
-    "await-promise": true,
-    "prefer-for-of": true
   }
 }
