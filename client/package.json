@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "vue-cli-service build --dest=../public --mode=development",
-    "watch": "vue-cli-service build --dest=../public --mode=development --watch",
-    "prod": "vue-cli-service build --dest=../public --mode=production",
+    "build": "vue-cli-service build --mode=development",
+    "watch": "vue-cli-service build --mode=development --watch",
+    "prod": "vue-cli-service build --mode=production",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
