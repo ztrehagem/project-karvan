@@ -53,13 +53,18 @@ export default Vue.extend({
         console.info(`not enough AP to move`)
         return
       }
+
+      this.moving = true
       this.$store.commit('player/consumeAp', this.$consts.AP_CONSUME_FIELD_MOVE)
       this.currentPointId = point.id
-      this.moving = true
       await wait(MAP_MOVING_DURATION)
       if (this.currentPoint.onEnter) {
         const exit = this.doMapEvent(this.currentPoint.onEnter)
         if (exit) return
+      }
+      if (Math.random() < 0.2) {
+        this.$router.push({ path: '/game/field/battle' })
+        return
       }
       this.moving = false
     },
@@ -120,7 +125,6 @@ export default Vue.extend({
     width 5rem
     height 5rem
     border 3px solid lighten(red, 50%)
-    // box-shadow 0 -1px 0 $cl-gray, 1px 0 0 $cl-gray, 0 1px 0 $cl-gray, -1px 0 0 $cl-gray
     transform translate(-50%, -50%)
     +enter-leave(transform)
       transform translate(-50%, -50%) scale(0)
