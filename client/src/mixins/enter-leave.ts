@@ -5,7 +5,8 @@ const ENTER_LEAVE_CLASS = '__enter-leave'
 
 export default Vue.extend({
   async mounted() {
-    await waitFrame(1)
+    await Vue.nextTick()
+    await waitFrame()
     this.$el.classList.add(ENTER_LEAVE_CLASS)
   },
   async beforeRouteLeave(to, from, next) {
