@@ -34,7 +34,6 @@ export default Vue.extend({
 .game-base
   &
     display flex
-    height 100vh
     flex-direction column
 
   .head

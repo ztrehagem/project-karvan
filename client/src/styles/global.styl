@@ -8,6 +8,7 @@ html
 
 body
   color $cl-dark
+  min-height 768px
   min-width 768px
   font-size 1.6rem
   +mobile()
@@ -21,5 +22,7 @@ button
 
 .layout
   overflow hidden
-  min-height 100vh
+  height 100%
 
+.layout > *
+  height 100%

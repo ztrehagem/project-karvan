@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import './styles/global.styl'
 import './plugins/firebase'
-import './plugins/device'
+import { enable100vhBody } from './plugins/device'
 import BackLink from './plugins/back-link.vue'
 import router from './router'
 import store from './store'
@@ -18,4 +18,7 @@ new Vue({
   router,
   store,
   render: (h) => h(App),
+  mounted() {
+    enable100vhBody(true)
+  },
 }).$mount('#app')

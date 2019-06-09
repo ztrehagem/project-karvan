@@ -2,8 +2,6 @@
 .menu-list
   router-link.link(v-for="(link, index) in links", :to="link.to", :key="index")
     .label {{link.label}}
-  back-link.link(v-if="back")
-    .label {{back}}
 </template>
 
 <script lang="ts">
@@ -11,7 +9,6 @@ import Vue from 'vue'
 export default Vue.extend({
   props: {
     links: { type: Array, required: true },
-    back: { type: String, default: '' },
   },
 })
 </script>

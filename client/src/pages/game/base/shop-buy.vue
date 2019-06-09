@@ -3,7 +3,7 @@
   .heading アイテムを買う
   tabbed-item-list.list(:tabbed-items="items")
   .foot
-    back-link.back
+    router-link.back(to="/game/base/shop")
       i.material-icons navigate_before
       span 戻る
 </template>
