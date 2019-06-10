@@ -1,13 +1,5 @@
 <template lang="pug">
-.status-bar
-  table.table
-    tr
-      th.th 行動値
-    tr
-      td
-        span {{$store.state.player.ap.toLocaleString()}}
-        small /
-        small {{$consts.AP_MAX.toLocaleString()}}
+.control-bar control-bar
 </template>
 
 <script lang="ts">
@@ -17,15 +9,10 @@ export default Vue.extend({
 </script>
 
 <style lang="stylus" scoped>
-.status-bar
+.control-bar
   &
     border-top 3px solid $cl-dark
     background-color $cl-light
-
-  .table
     padding 2rem
-
-  .th
-    text-align left
 </style>
 

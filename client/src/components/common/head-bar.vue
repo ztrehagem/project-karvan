@@ -2,6 +2,14 @@
 .head-bar
   .basetypeicon: div {{info.type}}
   .areaname {{info.name}}
+  table.status
+    tr
+      th.statush 行動値
+    tr
+      td
+        span {{$store.state.player.ap.toLocaleString()}}
+        small /
+        small {{$consts.AP_MAX.toLocaleString()}}
   .datetimeindicator
     .display
       div
@@ -30,6 +38,7 @@ export default Vue.extend({
     display flex
     align-items center
     background-color $cl-light
+    padding-right 16rem
 
   .basetypeicon
     position absolute
@@ -51,6 +60,14 @@ export default Vue.extend({
   .areaname
     margin-left 14rem
     font-size 2rem
+
+  .status
+    margin-left auto
+    line-height 1
+
+  .statush
+    text-align right
+    font-size 1.2rem
 
   .datetimeindicator
     position absolute

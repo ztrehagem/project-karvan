@@ -3,13 +3,13 @@
   head-bar.head(:info="info")
   .main
     router-view
-  status-bar.foot
+  control-bar.foot
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import HeadBar from '@/components/common/head-bar.vue'
-import StatusBar from '@/components/common/status-bar.vue'
+import ControlBar from '@/components/common/control-bar.vue'
 import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   mixins: [
@@ -17,7 +17,7 @@ export default Vue.extend({
   ],
   components: {
     HeadBar,
-    StatusBar,
+    ControlBar,
   },
   data() {
     return {
