@@ -11,6 +11,8 @@
 import Vue from 'vue'
 import EnterLeave from '@/mixins/enter-leave'
 import GaugeBar from '@/components/gauge-bar.vue'
+import { ENTER_LEAVE_DURATION } from '@/mixins/enter-leave'
+import { wait } from '@/utils/wait'
 export default Vue.extend({
   mixins: [
     EnterLeave,
@@ -28,12 +30,15 @@ export default Vue.extend({
       ],
     }
   },
-  mounted() {
-    this.$root.$emit('controlBar:partyList', true)
-    this.$nextTick(() => this.$root.$emit('partyList:selected', 0))
+  async mounted() {
+    this.$root.$emit('controlBar:partyList', { clickable: true })
+    this.$root.$emit('controlBar:globalCommandList', false)
+    await wait(ENTER_LEAVE_DURATION)
+    this.$root.$emit('partyList:selected', 0)
   },
   destroyed() {
     this.$root.$emit('controlBar:partyList', false)
+    this.$root.$emit('controlBar:globalCommandList', true)
   },
 })
 </script>

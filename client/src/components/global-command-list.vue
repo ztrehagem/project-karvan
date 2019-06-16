@@ -1,5 +1,5 @@
 <template lang="pug">
-.command-list
+.global-command-list
   button(type="button", @click="togglePartyList") パーティリスト
 </template>
 
@@ -21,7 +21,7 @@ export default Vue.extend({
 </script>
 
 <style lang="stylus" scoped>
-.command-list
+.global-command-list
   &
     padding 2rem
 </style>

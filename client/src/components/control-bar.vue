@@ -1,45 +1,44 @@
 <template lang="pug">
 .control-bar
-  command-list.commands._bordertop
-  transition(@enter="appear", @leave="disappear")
-    div.transition(v-if="flags.partyList")
-      party-list.party._bordertop
+  foot-bar-transition(v-slot:default, :active="!!flags.partyList")
+    party-list.party._bordertop(:clickable="flags.partyList.clickable")
+  foot-bar-transition(v-slot:default, :active="!!flags.globalCommandList")
+    global-command-list.commands._bordertop
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import CommandList from '@/components/command-list.vue'
+import GlobalCommandList from '@/components/global-command-list.vue'
 import PartyList from '@/components/party-list.vue'
+import FootBarTransition from '@/components/foot-bar-transition.vue'
 export default Vue.extend({
   components: {
-    CommandList,
+    GlobalCommandList,
     PartyList,
+    FootBarTransition,
   },
   data() {
     return {
       flags: {
-        partyList: false,
+        partyList: false as boolean | { [k: string]: any },
+        globalCommandList: true as boolean | { [k: string]: any },
       },
     }
   },
   created() {
     this.$root.$on('controlBar:partyList', this.onPartyList)
+    this.$root.$on('controlBar:globalCommandList', this.onGlobalCommandList)
   },
   destroyed() {
     this.$root.$off('controlBar:partyList', this.onPartyList)
+    this.$root.$off('controlBar:globalCommandList', this.onGlobalCommandList)
   },
   methods: {
-    appear(el: HTMLElement) {
-      const child = el.children.item(0)
-      if (!child) throw new Error()
-      const { height } = child.getBoundingClientRect()
-      el.style.height = `${height}px`
-    },
-    disappear(el: HTMLElement) {
-      el.style.height = null
-    },
-    onPartyList(appear: boolean) {
+    onPartyList(appear: boolean | { [k: string]: any }) {
       this.flags.partyList = appear
+    },
+    onGlobalCommandList(appear: boolean | { [k: string]: any }) {
+      this.flags.globalCommandList = appear
     },
   },
 })
@@ -49,11 +48,6 @@ export default Vue.extend({
 .control-bar
   &
     background-color $cl-light
-
-  .transition
-    height 0
-    transition ease 200ms height
-    overflow hidden
 
   .party
     width 100%

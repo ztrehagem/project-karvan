@@ -1,24 +1,35 @@
 <template lang="pug">
 .character-status-list
+  foot-bar-transition(v-slot:default, :active="selected !== null")
+    .commands
+      button.command(type="button", @click.prevent="command") こうげき
+      button.command(type="button", @click.prevent="command") スキル
+      button.command(type="button", @click.prevent="command") アイテム
+      button.command(type="button", @click.prevent="left") にげる
   .list
-    character-status.character(v-for="c in characters", :character="c", :class="{ [$style.selected]: isSelected(c) }")
+    character-status.character(
+      v-for="(c, index) in $store.state.party.characters",
+      :key="index",
+      :character="c",
+      :class="{ [$style.selected]: isSelected(c), [$style.clickable]: clickable }",
+      @click.native="select(c)",
+    )
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import FootBarTransition from '@/components/foot-bar-transition.vue'
 import CharacterStatus from '@/components/character-status.vue'
 export default Vue.extend({
   components: {
+    FootBarTransition,
     CharacterStatus,
+  },
+  props: {
+    clickable: { type: Boolean, default: false },
   },
   data() {
     return {
-      characters: [
-        { name: 'character1', hp: 10, hpMax: 10, gp: 10, gpMax: 10, mp: 10, mpMax: 10 },
-        { name: 'character2', hp: 18, hpMax: 20, gp: 9, gpMax: 20, mp: 3, mpMax: 20 },
-        { name: 'character3', hp: 21, hpMax: 30, gp: 30, gpMax: 30, mp: 12, mpMax: 30 },
-        { name: 'character4', hp: 16, hpMax: 40, gp: 2, gpMax: 40, mp: 39, mpMax: 40 },
-      ],
       selected: null as null | number,
     }
   },
@@ -32,8 +43,21 @@ export default Vue.extend({
     onSelected(index: number) {
       this.selected = index < 0 ? null : index
     },
-    isSelected(c: any): boolean {
-      return this.selected === this.characters.indexOf(c)
+    select(c: any) {
+      if (!this.clickable) return
+      this.selected = this.$store.state.party.characters.indexOf(c)
+    },
+    isSelected(c: any) {
+      return this.selected === this.$store.state.party.characters.indexOf(c)
+    },
+    command() {
+      console.log('command')
+    },
+    left() {
+      const ok = confirm('にげる？')
+      if (ok) {
+        this.$router.push('/game/field')
+      }
     },
   },
 })
@@ -41,6 +65,9 @@ export default Vue.extend({
 
 <style lang="stylus" scoped>
 .character-status-list
+  > :not(:first-child)
+    border-top 3px solid $cl-dark
+
   .list
     display flex
     justify-content center
@@ -49,6 +76,24 @@ export default Vue.extend({
   .character
     width 25%
     position relative
+
+  .commands
+    display flex
+
+  .command
+    cursor pointer
+    position relative
+    padding 2rem
+    padding-left 3rem
+
+    +hover()
+      &::before
+        position relative
+        right 1.5rem
+        top 0
+        display inline-block
+        content ">"
+        width 0
 </style>
 
 <style lang="stylus" scoped module>
@@ -62,5 +107,9 @@ export default Vue.extend({
     width 100%
     height 100%
     border 9px solid gold
+
+.clickable
+  cursor pointer
 </style>
+
 

@@ -8,7 +8,7 @@ export interface PlayerState {
   ap: number
 }
 
-export const player: Module<PlayerState, {}> = {
+export const store: Module<PlayerState, {}> = {
   namespaced: true,
   state: {
     ap: $consts.AP_MAX,
@@ -23,4 +23,4 @@ export const player: Module<PlayerState, {}> = {
   },
 }
 
-export default player
+export default store
