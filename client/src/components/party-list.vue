@@ -11,7 +11,7 @@
       v-for="(c, index) in $store.state.party.characters",
       :key="index",
       :character="c",
-      :class="{ [$style.selected]: isSelected(c), [$style.clickable]: clickable }",
+      :class="{ [$style.selected]: isSelected(c), [$style.selectable]: selectable }",
       @click.native="select(c)",
     )
 </template>
@@ -26,7 +26,7 @@ export default Vue.extend({
     CharacterStatus,
   },
   props: {
-    clickable: { type: Boolean, default: false },
+    selectable: { type: Boolean, default: false },
   },
   data() {
     return {
@@ -44,7 +44,7 @@ export default Vue.extend({
       this.selected = index < 0 ? null : index
     },
     select(c: any) {
-      if (!this.clickable) return
+      if (!this.selectable) return
       this.selected = this.$store.state.party.characters.indexOf(c)
     },
     isSelected(c: any) {
@@ -108,7 +108,7 @@ export default Vue.extend({
     height 100%
     border 9px solid gold
 
-.clickable
+.selectable
   cursor pointer
 </style>
 

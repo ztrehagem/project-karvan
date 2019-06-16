@@ -31,7 +31,7 @@ export default Vue.extend({
     }
   },
   async mounted() {
-    this.$root.$emit('controlBar:partyList', { clickable: true })
+    this.$root.$emit('controlBar:partyList', { selectable: true })
     this.$root.$emit('controlBar:globalCommandList', false)
     await wait(ENTER_LEAVE_DURATION)
     this.$root.$emit('partyList:selected', 0)

@@ -1,7 +1,7 @@
 <template lang="pug">
 .control-bar
   foot-bar-transition(v-slot:default, :active="!!flags.partyList")
-    party-list.party._bordertop(:clickable="flags.partyList.clickable")
+    party-list.party._bordertop(:selectable="flags.partyList.selectable")
   foot-bar-transition(v-slot:default, :active="!!flags.globalCommandList")
     global-command-list.commands._bordertop
 </template>
