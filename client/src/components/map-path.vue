@@ -1,5 +1,5 @@
 <template lang="pug">
-svg.field-line(:style="style", :width="svgsize.width", :height="svgsize.height")
+svg.map-path(:style="style", :width="svgsize.width", :height="svgsize.height")
   line(:x1="x1", :y1="y1", :x2="x2", :y2="y2", stroke="#303030", stroke-width="3")
 </template>
 
@@ -57,7 +57,7 @@ export default Vue.extend({
 </script>
 
 <style lang="stylus" scoped>
-.field-line
+.map-path
   &
     position absolute
     top calc(50% - 0.15rem)

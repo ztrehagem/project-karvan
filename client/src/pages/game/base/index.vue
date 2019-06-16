@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import MenuList from '@/components/base/menu-list.vue'
+import MenuList from '@/components/menu-list.vue'
 import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   mixins: [

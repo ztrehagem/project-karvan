@@ -8,8 +8,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import HeadBar from '@/components/common/head-bar.vue'
-import ControlBar from '@/components/common/control-bar.vue'
+import HeadBar from '@/components/head-bar.vue'
+import ControlBar from '@/components/control-bar.vue'
 import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   mixins: [

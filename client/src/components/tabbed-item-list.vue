@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import ItemList from '@/components/base/item-list.vue'
+import ItemList from '@/components/item-list.vue'
 export default Vue.extend({
   components: {
     ItemList,

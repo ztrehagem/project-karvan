@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import CharacterList from '@/components/common/character-list.vue'
+import CharacterList from '@/components/character-list.vue'
 import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   components: {
