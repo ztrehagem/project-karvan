@@ -3,6 +3,7 @@ import * as consts from './consts'
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $consts: typeof consts;
+    $style: { [className: string]: string }
+    $consts: typeof consts
   }
 }

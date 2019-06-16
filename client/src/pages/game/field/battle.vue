@@ -4,16 +4,16 @@
     span enemies
     router-link(to="/game/field") back
   div
-    character-list.characters
+    character-status-list.characters
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import CharacterList from '@/components/character-list.vue'
+import CharacterStatusList from '@/components/character-status-list.vue'
 import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   components: {
-    CharacterList,
+    CharacterStatusList,
   },
   mixins: [
     EnterLeave,
