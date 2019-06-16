@@ -1,5 +1,7 @@
 <template lang="pug">
 .control-bar
+  foot-bar-transition(v-slot:default, :active="!!$store.state.battle.character")
+    character-command-list._bordertop
   foot-bar-transition(v-slot:default, :active="!!flags.partyList")
     party-list.party._bordertop(:selectable="flags.partyList.selectable")
   foot-bar-transition(v-slot:default, :active="!!flags.globalCommandList")
@@ -8,20 +10,23 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import FootBarTransition from '@/components/foot-bar-transition.vue'
 import GlobalCommandList from '@/components/global-command-list.vue'
 import PartyList from '@/components/party-list.vue'
-import FootBarTransition from '@/components/foot-bar-transition.vue'
+import CharacterCommandList from '@/components/character-command-list.vue'
+type Appear = boolean | { [prop: string]: any }
 export default Vue.extend({
   components: {
+    FootBarTransition,
     GlobalCommandList,
     PartyList,
-    FootBarTransition,
+    CharacterCommandList,
   },
   data() {
     return {
       flags: {
-        partyList: false as boolean | { [k: string]: any },
-        globalCommandList: true as boolean | { [k: string]: any },
+        partyList: false as Appear,
+        globalCommandList: true as Appear,
       },
     }
   },
@@ -34,10 +39,10 @@ export default Vue.extend({
     this.$root.$off('controlBar:globalCommandList', this.onGlobalCommandList)
   },
   methods: {
-    onPartyList(appear: boolean | { [k: string]: any }) {
+    onPartyList(appear: Appear) {
       this.flags.partyList = appear
     },
-    onGlobalCommandList(appear: boolean | { [k: string]: any }) {
+    onGlobalCommandList(appear: Appear) {
       this.flags.globalCommandList = appear
     },
   },

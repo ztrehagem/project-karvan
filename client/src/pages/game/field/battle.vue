@@ -1,7 +1,7 @@
 <template lang="pug">
 .game-field-battle
   .enemies
-    .enemy(v-for="e in enemies")
+    button.enemy(v-for="e in enemies", type="button", :class="{ [$style.selectable]: selectable }", @click.prevent="select(e)")
       strong {{e.name}}
       gauge-bar(type="hp", :current="e.hp", :max="e.hpMax")
   router-link.exit(to="/game/field") back
@@ -13,6 +13,7 @@ import EnterLeave from '@/mixins/enter-leave'
 import GaugeBar from '@/components/gauge-bar.vue'
 import { ENTER_LEAVE_DURATION } from '@/mixins/enter-leave'
 import { wait } from '@/utils/wait'
+import { Enemy } from '@/models/character'
 export default Vue.extend({
   mixins: [
     EnterLeave,
@@ -27,8 +28,13 @@ export default Vue.extend({
         { name: 'スライムB', hp: 10, hpMax: 10 },
         { name: 'スライムC', hp: 10, hpMax: 10 },
         { name: 'スライムD', hp: 10, hpMax: 10 },
-      ],
+      ] as Enemy[],
     }
+  },
+  computed: {
+    selectable(): boolean {
+      return !!this.$store.state.battle.commandType
+    },
   },
   async mounted() {
     this.$root.$emit('controlBar:partyList', { selectable: true })
@@ -36,9 +42,17 @@ export default Vue.extend({
     await wait(ENTER_LEAVE_DURATION)
     this.$root.$emit('partyList:selected', 0)
   },
+  beforeDestroy() {
+    this.$store.commit('battle/clear')
+  },
   destroyed() {
     this.$root.$emit('controlBar:partyList', false)
     this.$root.$emit('controlBar:globalCommandList', true)
+  },
+  methods: {
+    select(e: Enemy) {
+      this.$store.commit('battle/selectEnemy', e)
+    },
   },
 })
 </script>
@@ -62,4 +76,11 @@ export default Vue.extend({
 
   .exit
     position fixed
+</style>
+
+<style lang="stylus" scoped module>
+.selectable
+  cursor pointer
+  &::hover
+    background-color honeydew
 </style>

@@ -1,17 +1,8 @@
 import Vue from 'vue'
 import Vuex, { Module } from 'vuex'
+import { Character } from '@/models/character'
 
 Vue.use(Vuex)
-
-export interface Character {
-  name: string
-  hp: number
-  hpMax: number
-  gp: number
-  gpMax: number
-  mp: number
-  mpMax: number
-}
 
 export interface PartyStore {
   characters: Character[]
