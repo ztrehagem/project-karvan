@@ -14,7 +14,7 @@ export default Vue.extend({
     max: { type: Number, required: true },
   },
   computed: {
-    barStyle(): Object {
+    barStyle(): { [prop: string]: string } {
       return { transform: `scaleX(${this.current / this.max})` }
     },
   },

@@ -1,5 +1,5 @@
 <template lang="pug">
-.character-status-box
+.character-status
   .name {{character.name}}
   gauge-bar(type="hp", :current="character.hp", :max="character.hpMax")
   gauge-bar(type="gp", :current="character.gp", :max="character.gpMax")
@@ -22,7 +22,7 @@ export default Vue.extend({
 <style lang="stylus" scoped>
 $skew = -10deg
 
-.character-status-box
+.character-status
   &
     border-right 3px solid $cl-dark
     padding 2rem

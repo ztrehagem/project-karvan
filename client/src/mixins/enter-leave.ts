@@ -3,6 +3,8 @@ import { wait, waitFrame } from '@/utils/wait'
 
 const ENTER_LEAVE_CLASS = '__enter-leave'
 
+export const ENTER_LEAVE_DURATION = 200
+
 export default Vue.extend({
   async mounted() {
     await Vue.nextTick()
@@ -11,7 +13,7 @@ export default Vue.extend({
   },
   async beforeRouteLeave(to, from, next) {
     this.$el.classList.remove(ENTER_LEAVE_CLASS)
-    await wait(200)
+    await wait(ENTER_LEAVE_DURATION)
     next()
   },
 })
