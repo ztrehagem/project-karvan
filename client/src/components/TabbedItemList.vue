@@ -2,12 +2,12 @@
 .tabbed-item-list
   .tabs
     button.tab(v-for="(tab, index) in tabbedItems", type="button", @click="tabIndex = index", :class="{_current: tabIndex == index}") {{tab.label}}
-  item-list.items(:items="tabbedItems[tabIndex].items")
+  ItemList.items(:items="tabbedItems[tabIndex].items")
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import ItemList from '@/components/item-list.vue'
+import ItemList from '@/components/ItemList.vue'
 export default Vue.extend({
   components: {
     ItemList,

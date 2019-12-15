@@ -1,11 +1,11 @@
 <template lang="pug">
 .game-base-index
-  menu-list.menu(:links="links")
+  MenuList.menu(:links="links")
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import MenuList from '@/components/menu-list.vue'
+import MenuList from '@/components/MenuList.vue'
 import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   mixins: [
@@ -39,4 +39,3 @@ export default Vue.extend({
     +enter-leave(transform)
       transform translateX(-100%)
 </style>
-

@@ -1,7 +1,7 @@
 <template lang="pug">
 .character-status-list
   .list
-    character-status.character(
+    CharacterStatus.character(
       v-for="(c, index) in $store.state.party.characters",
       :key="index",
       :character="c",
@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import CharacterStatus from '@/components/character-status.vue'
+import CharacterStatus from '@/components/CharacterStatus.vue'
 import { Character, CharacterCommandType, CharacterCommand } from '@/models/character'
 export default Vue.extend({
   components: {
@@ -64,5 +64,3 @@ export default Vue.extend({
 .selectable
   cursor pointer
 </style>
-
-

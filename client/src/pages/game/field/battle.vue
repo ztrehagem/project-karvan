@@ -3,15 +3,14 @@
   .enemies
     button.enemy(v-for="e in enemies", type="button", :class="{ [$style.selectable]: selectable }", @click.prevent="select(e)")
       strong {{e.name}}
-      gauge-bar(type="hp", :current="e.hp", :max="e.hpMax")
+      GaugeBar(type="hp", :current="e.hp", :max="e.hpMax")
   router-link.exit(to="/game/field") back
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import EnterLeave from '@/mixins/enter-leave'
-import GaugeBar from '@/components/gauge-bar.vue'
-import { ENTER_LEAVE_DURATION } from '@/mixins/enter-leave'
+import EnterLeave, { ENTER_LEAVE_DURATION } from '@/mixins/enter-leave'
+import GaugeBar from '@/components/GaugeBar.vue'
 import { wait } from '@/utils/wait'
 import { Enemy } from '@/models/character'
 export default Vue.extend({

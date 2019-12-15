@@ -2,7 +2,7 @@
 .game-field-map
   .map(:style="mapStyle")
     .point(v-for="point in map", :style="pointStyle(point)")
-      map-path.path(v-for="cp in connectedLowerPoints(point)", :key="cp.id", :from="point", :to="cp")
+      MapPath.path(v-for="cp in connectedLowerPoints(point)", :key="cp.id", :from="point", :to="cp")
     .point(v-for="point in map", :style="pointStyle(point)")
       button.button(type="button", @click="moveTo(point)", :disabled="moving")
   .center
@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import MapPath from '@/components/map-path.vue'
+import MapPath from '@/components/MapPath.vue'
 import EnterLeave from '@/mixins/enter-leave'
 import map, { Point, MapEvent } from '@/assets/map'
 import { wait } from '@/utils/wait'
@@ -129,4 +129,3 @@ export default Vue.extend({
     +enter-leave(transform)
       transform translate(-50%, -50%) scale(0)
 </style>
-

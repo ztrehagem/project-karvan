@@ -1,7 +1,7 @@
 <template lang="pug">
 .game-base-shop-buy
   .heading アイテムを買う
-  tabbed-item-list.list(:tabbed-items="items")
+  TabbedItemList.list(:tabbed-items="items")
   .foot
     router-link.back(to="/game/base/shop")
       i.material-icons navigate_before
@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import TabbedItemList from '@/components/tabbed-item-list.vue'
+import TabbedItemList from '@/components/TabbedItemList.vue'
 import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   mixins: [

@@ -1,19 +1,19 @@
 <template lang="pug">
 .control-bar
-  foot-bar-transition(v-slot:default, :active="!!$store.state.battle.character")
-    character-command-list._bordertop
-  foot-bar-transition(v-slot:default, :active="!!flags.partyList")
-    party-list.party._bordertop(:selectable="flags.partyList.selectable")
-  foot-bar-transition(v-slot:default, :active="!!flags.globalCommandList")
-    global-command-list.commands._bordertop
+  FootBarTransition(v-slot:default, :active="!!$store.state.battle.character")
+    CharacterCommandList._bordertop
+  FootBarTransition(v-slot:default, :active="!!flags.partyList")
+    PartyList.party._bordertop(:selectable="flags.partyList.selectable")
+  FootBarTransition(v-slot:default, :active="!!flags.globalCommandList")
+    GlobalCommandList.commands._bordertop
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import FootBarTransition from '@/components/foot-bar-transition.vue'
-import GlobalCommandList from '@/components/global-command-list.vue'
-import PartyList from '@/components/party-list.vue'
-import CharacterCommandList from '@/components/character-command-list.vue'
+import FootBarTransition from '@/components/FootBarTransition.vue'
+import GlobalCommandList from '@/components/GlobalCommandList.vue'
+import PartyList from '@/components/PartyList.vue'
+import CharacterCommandList from '@/components/CharacterCommandList.vue'
 type Appear = boolean | { [prop: string]: any }
 export default Vue.extend({
   components: {

@@ -1,15 +1,15 @@
 <template lang="pug">
 .game-field
-  head-bar.head(:info="info")
+  HeadBar.head(:info="info")
   .main
     router-view
-  control-bar.foot
+  ControlBar.foot
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import HeadBar from '@/components/head-bar.vue'
-import ControlBar from '@/components/control-bar.vue'
+import HeadBar from '@/components/HeadBar.vue'
+import ControlBar from '@/components/ControlBar.vue'
 import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
   mixins: [
@@ -60,4 +60,3 @@ export default Vue.extend({
     +enter-leave(transform)
       transform translateY(100%)
 </style>
-
