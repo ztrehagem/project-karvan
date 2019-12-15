@@ -43,7 +43,7 @@ const router = new VueRouter({
           path: 'field',
           component: () => import('./pages/game/field.vue'),
           children: [
-            { path: '', component: () => import('./pages/game/field/map.vue') },
+            { path: '', component: () => import('./pages/game/field/index.vue') },
             {
               path: 'battle',
               component: () => import('./pages/game/field/battle.vue'),

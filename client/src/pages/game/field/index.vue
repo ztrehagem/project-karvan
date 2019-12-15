@@ -1,5 +1,5 @@
 <template lang="pug">
-.game-field-map
+.game-field-index
   .map(:style="mapStyle")
     .point(v-for="point in map", :style="pointStyle(point)")
       MapPath.path(v-for="cp in connectedLowerPoints(point)", :key="cp.id", :from="point", :to="cp")
@@ -89,7 +89,7 @@ export default Vue.extend({
 </script>
 
 <style lang="stylus" scoped>
-.game-field-map
+.game-field-index
   &
     position relative
 

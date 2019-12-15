@@ -22,23 +22,7 @@ export default Vue.extend({
       items: [
         {
           label: '薬',
-          items: [
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-            { label: 'ポーション' },
-          ],
+          items: [...Array(16)].map(() => ({ label: 'ポーション' })),
         },
         {
           label: '道具',
