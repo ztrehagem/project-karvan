@@ -1,25 +1,18 @@
-import Vue from 'vue'
-import Vuex, { Module } from 'vuex'
-import * as $consts from '@/consts'
+import * as consts from '@/consts'
+import * as vsm from 'vuex-smart-module'
 
-Vue.use(Vuex)
-
-export interface PlayerState {
-  ap: number
+class State {
+  ap = consts.AP_MAX
 }
 
-export const store: Module<PlayerState, {}> = {
-  namespaced: true,
-  state: {
-    ap: $consts.AP_MAX,
-  },
-  mutations: {
-    consumeAp(state, amount) {
-      if (state.ap < amount) throw new Error('not enough AP')
-      state.ap -= amount
-    },
-  },
-  actions: {},
+class Mutations extends vsm.Mutations<State> {
+  consumeAp(amount: number) {
+    if (this.state.ap < amount) throw new Error('not enough AP')
+    this.state.ap -= amount
+  }
 }
 
-export default store
+export default new vsm.Module({
+  state: State,
+  mutations: Mutations,
+})

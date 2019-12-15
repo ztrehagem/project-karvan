@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import Vuex, { Module } from 'vuex'
+import * as vsm from 'vuex-smart-module'
 import {
   Character,
   CharacterCommand,
@@ -7,57 +6,54 @@ import {
   Enemy,
 } from '@/models/character'
 
-Vue.use(Vuex)
-
-export interface BattleStore {
-  character: Character | null
-  commandType: CharacterCommandType | null
-  commands: CharacterCommand[]
+class State {
+  character: Character | null = null
+  commandType: CharacterCommandType | null = null
+  commands: CharacterCommand[] = []
 }
 
-export const store: Module<BattleStore, {}> = {
-  namespaced: true,
-  state: {
-    character: null,
-    commandType: null,
-    commands: [],
-  },
-  mutations: {
-    clear(state) {
-      state.character = null
-      state.commandType = null
-      state.commands.splice(0, Infinity)
-    },
-    selectCharacter(state, character: Character) {
-      state.character = character
-      state.commandType = null
-    },
-    clearCharacter(state) {
-      state.character = null
-    },
-    selectCommandType(state, type: CharacterCommandType) {
-      state.commandType = type
-    },
-    clearCommandType(state) {
-      state.commandType = null
-    },
-    selectEnemy(state, enemy: Enemy) {
-      if (!state.commandType || !state.character) throw new Error()
-      const index = state.commands.findIndex(
-        ({ actor }) => actor === state.character,
-      )
-      if (index >= 0) state.commands.splice(index, 1)
-      state.commands.push({
-        actor: state.character,
-        type: state.commandType,
-        target: enemy,
-      })
-      state.character = null
-      state.commandType = null
-      console.log(state.commands)
-    },
-  },
-  actions: {},
+class Mutations extends vsm.Mutations<State> {
+  clear() {
+    this.state.character = null
+    this.state.commandType = null
+    this.state.commands.splice(0, Infinity)
+  }
+
+  selectCharacter(character: Character) {
+    this.state.character = character
+    this.state.commandType = null
+  }
+
+  clearCharacter() {
+    this.state.character = null
+  }
+
+  selectCommandType(type: CharacterCommandType) {
+    this.state.commandType = type
+  }
+
+  clearCommandType() {
+    this.state.commandType = null
+  }
+
+  selectEnemy(enemy: Enemy) {
+    if (!this.state.commandType || !this.state.character) throw new Error()
+    const index = this.state.commands.findIndex(
+      ({ actor }) => actor === this.state.character,
+    )
+    if (index >= 0) this.state.commands.splice(index, 1)
+    this.state.commands.push({
+      actor: this.state.character,
+      type: this.state.commandType,
+      target: enemy,
+    })
+    this.state.character = null
+    this.state.commandType = null
+    console.log(this.state.commands)
+  }
 }
 
-export default store
+export default new vsm.Module({
+  state: State,
+  mutations: Mutations,
+})
