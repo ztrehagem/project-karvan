@@ -12,9 +12,7 @@ import HeadBar from '@/components/HeadBar.vue'
 import ControlBar from '@/components/ControlBar.vue'
 import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
-  mixins: [
-    EnterLeave,
-  ],
+  mixins: [EnterLeave],
   components: {
     HeadBar,
     ControlBar,

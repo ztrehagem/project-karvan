@@ -12,7 +12,6 @@ export default Vue.extend({
 })
 </script>
 
-
 <style lang="stylus" scoped>
 .item-list
   .item
@@ -21,4 +20,3 @@ export default Vue.extend({
     &:not(:first-child)
       border-top none
 </style>
-

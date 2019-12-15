@@ -18,9 +18,7 @@ import { wait } from '@/utils/wait'
 const MAP_MOVING_DURATION = 300
 
 export default Vue.extend({
-  mixins: [
-    EnterLeave,
-  ],
+  mixins: [EnterLeave],
   components: {
     MapPath,
   },
@@ -36,7 +34,10 @@ export default Vue.extend({
       return this.map[this.currentPointId]
     },
     mapStyle(): { transform: string } {
-      return { transform: `translate(-${this.currentPoint.x * 8}rem, -${this.currentPoint.y * 8}rem)` }
+      return {
+        transform: `translate(-${this.currentPoint.x * 8}rem, -${this
+          .currentPoint.y * 8}rem)`,
+      }
     },
   },
   methods: {

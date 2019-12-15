@@ -13,7 +13,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import CharacterStatus from '@/components/CharacterStatus.vue'
-import { Character, CharacterCommandType, CharacterCommand } from '@/models/character'
+import {
+  Character,
+  CharacterCommandType,
+  CharacterCommand,
+} from '@/models/character'
 export default Vue.extend({
   components: {
     CharacterStatus,
@@ -29,7 +33,8 @@ export default Vue.extend({
   },
   methods: {
     onSelected(index: number) {
-      this.$store.state.battle.character = index < 0 ? null : this.$store.state.party.characters[index]
+      this.$store.state.battle.character =
+        index < 0 ? null : this.$store.state.party.characters[index]
     },
     selectCharacter(c: Character) {
       if (!this.selectable) return

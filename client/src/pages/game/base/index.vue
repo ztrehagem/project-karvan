@@ -8,9 +8,7 @@ import Vue from 'vue'
 import MenuList from '@/components/MenuList.vue'
 import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
-  mixins: [
-    EnterLeave,
-  ],
+  mixins: [EnterLeave],
   components: {
     MenuList,
   },

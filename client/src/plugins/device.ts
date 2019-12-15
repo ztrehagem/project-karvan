@@ -18,5 +18,8 @@ const apply100vhBody = (fix: boolean = false) => {
 
 export const enable100vhBody = (fix: boolean = false) => {
   apply100vhBody(fix)
-  window.addEventListener('resize', throttle(500, () => apply100vhBody(fix)))
+  window.addEventListener(
+    'resize',
+    throttle(500, () => apply100vhBody(fix)),
+  )
 }

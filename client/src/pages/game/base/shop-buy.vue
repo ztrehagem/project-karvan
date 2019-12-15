@@ -13,9 +13,7 @@ import Vue from 'vue'
 import TabbedItemList from '@/components/TabbedItemList.vue'
 import EnterLeave from '@/mixins/enter-leave'
 export default Vue.extend({
-  mixins: [
-    EnterLeave,
-  ],
+  mixins: [EnterLeave],
   components: {
     TabbedItemList,
   },
@@ -44,16 +42,11 @@ export default Vue.extend({
         },
         {
           label: '道具',
-          items: [
-            { label: 'ロープ' },
-            { label: '丈夫なロープ' },
-          ],
+          items: [{ label: 'ロープ' }, { label: '丈夫なロープ' }],
         },
         {
           label: '素材',
-          items: [
-            { label: '革' },
-          ],
+          items: [{ label: '革' }],
         },
       ],
     }

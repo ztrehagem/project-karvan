@@ -14,10 +14,7 @@ export interface Enemy {
   hpMax: number
 }
 
-export type CharacterCommandType
-  = 'attack'
-  | 'skill'
-  | 'item'
+export type CharacterCommandType = 'attack' | 'skill' | 'item'
 
 export interface CharacterCommand {
   actor: Character | Enemy

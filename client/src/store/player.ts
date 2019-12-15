@@ -19,8 +19,7 @@ export const store: Module<PlayerState, {}> = {
       state.ap -= amount
     },
   },
-  actions: {
-  },
+  actions: {},
 }
 
 export default store

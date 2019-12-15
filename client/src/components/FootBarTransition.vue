@@ -29,7 +29,7 @@ export default Vue.extend({
     },
     async disappear(el: HTMLElement) {
       await waitFrame()
-      this.$nextTick(() => el.style.height = '0')
+      this.$nextTick(() => (el.style.height = '0'))
     },
   },
 })

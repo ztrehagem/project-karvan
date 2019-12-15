@@ -8,7 +8,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Character, CharacterCommand, CharacterCommandType } from '@/models/character'
+import {
+  Character,
+  CharacterCommand,
+  CharacterCommandType,
+} from '@/models/character'
 export default Vue.extend({
   methods: {
     command(type: CharacterCommandType) {
@@ -49,7 +53,6 @@ export default Vue.extend({
         width 0
         material-icons("\e315")
 </style>
-
 
 <style lang="stylus" scoped module>
 .selected

@@ -9,7 +9,11 @@
 import Vue from 'vue'
 export default Vue.extend({
   props: {
-    type: { type: String, validator: (type: string) => ['hp', 'gp', 'mp'].includes(type), required: true },
+    type: {
+      type: String,
+      validator: (type: string) => ['hp', 'gp', 'mp'].includes(type),
+      required: true,
+    },
     current: { type: Number, required: true },
     max: { type: Number, required: true },
   },
@@ -52,4 +56,3 @@ export default Vue.extend({
 .mp
   background-color royalblue
 </style>
-

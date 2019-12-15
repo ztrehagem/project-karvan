@@ -23,7 +23,6 @@ export default Vue.extend({
 })
 </script>
 
-
 <style lang="stylus" scoped>
 .tabbed-item-list
   &

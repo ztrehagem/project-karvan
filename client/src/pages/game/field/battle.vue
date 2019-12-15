@@ -14,9 +14,7 @@ import GaugeBar from '@/components/GaugeBar.vue'
 import { wait } from '@/utils/wait'
 import { Enemy } from '@/models/character'
 export default Vue.extend({
-  mixins: [
-    EnterLeave,
-  ],
+  mixins: [EnterLeave],
   components: {
     GaugeBar,
   },

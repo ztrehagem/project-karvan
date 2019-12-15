@@ -11,25 +11,25 @@ export default Vue.extend({
     to: { type: Object, required: true },
   },
   computed: {
-    diff(): { width: number, height: number } {
+    diff(): { width: number; height: number } {
       return {
         width: this.to.x - this.from.x,
         height: this.to.y - this.from.y,
       }
     },
-    dimension(): { width: number, height: number } {
+    dimension(): { width: number; height: number } {
       return {
         width: Math.abs(this.diff.width) * 80,
         height: Math.abs(this.diff.height) * 80,
       }
     },
-    svgsize(): { width: number, height: number } {
+    svgsize(): { width: number; height: number } {
       return {
         width: Math.max(this.dimension.width, 3),
         height: Math.max(this.dimension.height, 3),
       }
     },
-    dir(): { x: boolean, y: boolean } {
+    dir(): { x: boolean; y: boolean } {
       return {
         x: this.diff.width >= 0,
         y: this.diff.height >= 0,
@@ -37,7 +37,9 @@ export default Vue.extend({
     },
     style(): any {
       return {
-        transform: `translate(${this.dir.x ? '0' : '-100%'}, ${this.dir.y ? '0' : '-100%'})`,
+        transform: `translate(${this.dir.x ? '0' : '-100%'}, ${
+          this.dir.y ? '0' : '-100%'
+        })`,
       }
     },
     x1(): number {
@@ -63,4 +65,3 @@ export default Vue.extend({
     top calc(50% - 0.15rem)
     left calc(50% - 0.15rem)
 </style>
-

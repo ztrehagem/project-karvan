@@ -1,13 +1,18 @@
 import Vue from 'vue'
 import Vuex, { Module } from 'vuex'
-import { Character, CharacterCommand, CharacterCommandType, Enemy } from '@/models/character'
+import {
+  Character,
+  CharacterCommand,
+  CharacterCommandType,
+  Enemy,
+} from '@/models/character'
 
 Vue.use(Vuex)
 
 export interface BattleStore {
   character: Character | null
-  commandType: CharacterCommandType | null,
-  commands: CharacterCommand[],
+  commandType: CharacterCommandType | null
+  commands: CharacterCommand[]
 }
 
 export const store: Module<BattleStore, {}> = {
@@ -38,7 +43,9 @@ export const store: Module<BattleStore, {}> = {
     },
     selectEnemy(state, enemy: Enemy) {
       if (!state.commandType || !state.character) throw new Error()
-      const index = state.commands.findIndex(({ actor }) => actor === state.character)
+      const index = state.commands.findIndex(
+        ({ actor }) => actor === state.character,
+      )
       if (index >= 0) state.commands.splice(index, 1)
       state.commands.push({
         actor: state.character,
@@ -50,8 +57,7 @@ export const store: Module<BattleStore, {}> = {
       console.log(state.commands)
     },
   },
-  actions: {
-  },
+  actions: {},
 }
 
 export default store

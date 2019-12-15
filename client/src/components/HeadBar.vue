@@ -28,7 +28,6 @@ export default Vue.extend({
 })
 </script>
 
-
 <style lang="stylus" scoped>
 .head-bar
   &
@@ -82,4 +81,3 @@ export default Vue.extend({
     align-items center
     justify-content center
 </style>
-
